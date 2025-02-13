@@ -46,10 +46,10 @@ VALIDATE $? "installing current nodejs"
 id roboshop
 if [ $? -ne 0 ]
 then
-    useradd roboshop &>> LOGFILE
+    useradd roboshop
     VALIDATE $? "creating roboshop user"
 else
-    echo "roboshop user already exists $Y Skipping $N"
+    echo -e "roboshop user already exists $Y Skipping $N"
 fi
 
 mkdir -p /app &>> LOGFILE
@@ -87,5 +87,5 @@ dnf install mongodb-org-shell -y &>> LOGFILE
 VALIDATE $? "installing mongodb shell"
 
 
-mongo --host mongodb.appalla.shop </app/schema/catalogue.js
+mongo --host mongodb.appalla.shop </app/schema/catalogue.js &>> LOGFILE
 VALIDATE $? "loading catalogue data into mongodb"
