@@ -83,3 +83,4 @@ VALIDATE $? "installing mongodb shell"
 
 
 mongo --host mongodb.appalla.shop </app/schema/catalogue.js
+VALIDATE $? "loading catalogue data into mongodb"
