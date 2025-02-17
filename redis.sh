@@ -35,10 +35,10 @@ else
 fi
 
 
-dnf install https://rpms.remirepo.net/enterprise/remi-release-8.rpm  -y &>> LOGFILE
+dnf install dnf install sudo dnf install https://rpms.remirepo.net/enterprise/remi-release-8.rpm --skip-broken -y &>> LOGFILE
 VALIDATE $? "installing remi release"
 
-dnf module enable redis:remi-6.2 -y &>> LOGFILE
+dnf module enable redis:6 -y &>> LOGFILE
 VALIDATE $? "emabling redis"
 
 dnf install redis -y &>> LOGFILE
