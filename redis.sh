@@ -35,7 +35,7 @@ else
 fi
 
 
-dnf install https://rpms.remirepo.net/enterprise/remi-release-8.rpm --nobest -y &>> LOGFILE
+dnf install https://rpms.remirepo.net/enterprise/remi-release-8.rpm --skip-broken' -y &>> LOGFILE
 VALIDATE $? "installing remi release"
 
 dnf module enable redis:remi-6.2 -y &>> LOGFILE
