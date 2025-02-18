@@ -35,21 +35,21 @@ else
 fi
 
 
-dnf install dnf install sudo dnf install https://rpms.remirepo.net/enterprise/remi-release-8.rpm --skip-broken -y &>> LOGFILE
+dnf install dnf install sudo dnf install https://rpms.remirepo.net/enterprise/remi-release-8.rpm --skip-broken -y &>> $LOGFILE
 VALIDATE $? "installing remi release"
 
-# dnf module enable redis:6 -y &>> LOGFILE
+# dnf module enable redis:6 -y &>> $LOGFILE
 # VALIDATE $? "emabling redis"
 
-dnf install redis -y &>> LOGFILE
+dnf install redis -y &>> $LOGFILE
 VALIDATE $? "installing redis"
 
 
-sed -i 's/127.0.0.1/0.0.0.0/g' /etc/redis.conf &>> LOGFILE
+sed -i 's/127.0.0.1/0.0.0.0/g' /etc/redis.conf &>> $LOGFILE
 VALIDATE $? "allowing remote connections"
 
-systemctl enable redis &>> LOGFILE
+systemctl enable redis &>> $LOGFILE
 VALIDATE $? "enable redis"
 
-systemctl start redis &>> LOGFILE
+systemctl start redis &>> $LOGFILE
 VALIDATE $? "start redis"
