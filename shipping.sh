@@ -34,5 +34,5 @@ else
 fi
 
 dnf install maven -y
-VALIDATE $? "installing maven"
+VALIDATE $? "installing mavenn"
 
