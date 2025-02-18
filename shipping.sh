@@ -48,40 +48,40 @@ else
 fi
 
 
-mkdir -p /app &>> LOGFILE
+mkdir -p /app &>> $LOGFILE
 VALIDATE $? "creating app directory"
 
-curl -L -o /tmp/shipping.zip https://roboshop-builds.s3.amazonaws.com/shipping.zip &>> LOGFILE
+curl -L -o /tmp/shipping.zip https://roboshop-builds.s3.amazonaws.com/shipping.zip &>> $LOGFILE
 VALIDATE $? "Downloading shipping app"
 
-cd /app &>> LOGFILE
-unzip -o /tmp/shipping.zip &>> LOGFILE
+cd /app &>> $LOGFILE
+unzip -o /tmp/shipping.zip &>> $LOGFILE
 VALIDATE $? "unziping shipping app"
 
-mvn clean package &>> LOGFILE
+mvn clean package &>> $LOGFILE
 VALIDATE $? "installing dependencies"
 
-mv target/shipping-1.0.jar shipping.jar &>> LOGFILE
+mv target/shipping-1.0.jar shipping.jar &>> $LOGFILE
 VALIDATE $? "rename shipping jar file"
 
 
-cp /home/centos/roboshop-shell/shipping.service /etc/systemd/system/shipping.service &>> LOGFILE
+cp /home/centos/roboshop-shell/shipping.service /etc/systemd/system/shipping.service &>> $LOGFILE
 VALIDATE $? "copying shipping service file"
 
-systemctl daemon-reload &>> LOGFILE
+systemctl daemon-reload &>> $LOGFILE
 VALIDATE $? "shipping daemon reload" 
 
-systemctl enable shipping &>> LOGFILE
+systemctl enable shipping &>> $LOGFILE
 VALIDATE $? "shipping daemon enable"
 
-systemctl start shipping &>> LOGFILE
+systemctl start shipping &>> $LOGFILE
 VALIDATE $? "shipping daemon start"
 
-dnf install mysql -y &>> LOGFILE
+dnf install mysql -y &>> $LOGFILE
 VALIDATE $? "install mysql client"
 
-mysql -h mysql.appalla.shop -uroot -pRoboShop@1 < /app/schema/shipping.sql &>> LOGFILE
+mysql -h mysql.appalla.shop -uroot -pRoboShop@1 < /app/schema/shipping.sql &>> $LOGFILE
 VALIDATE $? "loadding shipping data to mysql"
 
-systemctl restart shipping &>> LOGFILE
+systemctl restart shipping &>> $LOGFILE
 VALIDATE $? "restart shipping service"
