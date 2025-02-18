@@ -62,7 +62,7 @@ mvn clean package &>> LOGFILE
 VALIDATE $? "installing dependencies"
 
 mv target/shipping-1.0.jar shipping.jar &>> LOGFILE
-VALIDATE $? "moving shipping jar file"
+VALIDATE $? "rename shipping jar file"
 
 
 cp /home/centos/roboshop-shell/shipping.service /etc/systemd/system/shipping.service &>> LOGFILE
