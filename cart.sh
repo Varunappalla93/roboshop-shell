@@ -56,12 +56,11 @@ mkdir -p /app &>> LOGFILE
 VALIDATE $? "creating app directory"
 
 
-curl -o curl -L -o /tmp/cart.zip https://roboshop-builds.s3.amazonaws.com/cart.zip &>> LOGFILE
+curl -L -o /tmp/cart.zip https://roboshop-builds.s3.amazonaws.com/cart.zip &>> LOGFILE
 VALIDATE $? "Downloading cart app"
 
 cd /app &>> LOGFILE
 unzip -o /tmp/cart.zip &>> LOGFILE
-
 VALIDATE $? "unziping cart app"
 
 npm install  &>> LOGFILE
