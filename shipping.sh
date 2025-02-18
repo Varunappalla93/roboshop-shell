@@ -77,11 +77,11 @@ VALIDATE $? "shipping daemon enable"
 systemctl start shipping &>> LOGFILE
 VALIDATE $? "shipping daemon start"
 
-dnf install mysql -y
+dnf install mysql -y &>> LOGFILE
 VALIDATE $? "install mysql client"
 
-mysql -h mysql.appalla.shop -uroot -pRoboShop@1 < /app/schema/shipping.sql 
+mysql -h mysql.appalla.shop -uroot -pRoboShop@1 < /app/schema/shipping.sql &>> LOGFILE
 VALIDATE $? "loadding shipping data to mysql"
 
-systemctl restart shipping
+systemctl restart shipping &>> LOGFILE
 VALIDATE $? "restart shipping service"
