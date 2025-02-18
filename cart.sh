@@ -77,4 +77,4 @@ systemctl enable cart &>> LOGFILE
 VALIDATE $? "cart daemon enable"
 
 systemctl start cart &>> LOGFILE
-VALIDATE $? "cart daemon start"systemctl enable cart
+VALIDATE $? "cart daemon start"
