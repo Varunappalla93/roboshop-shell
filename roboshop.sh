@@ -1,7 +1,7 @@
 AMI=ami-0b4f379183e5706b9
 SG_ID=sg-0fa2e3c7f1d153462
 INSTANCES=("mongodb" "redis" "mysql" "rabbitmq" "catalogue" "user" "cart" "shipping" "payment" "dispatch" "web")
-ZONE_ID= 
+ZONE_ID= #route53 Zone ID
 DOMAIN_NAME="appalla.shop"
 
 for i in "${INSTANCES[@]}"
