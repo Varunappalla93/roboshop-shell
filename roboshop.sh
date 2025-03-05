@@ -1,9 +1,10 @@
+#!/bin/bash
+
 AMI=ami-0b4f379183e5706b9
 SG_ID=sg-0fa2e3c7f1d153462
 INSTANCES=("mongodb" "redis" "mysql" "rabbitmq" "catalogue" "user" "cart" "shipping" "payment" "dispatch" "web")
-ZONE_ID= Z02333473VXA3Y3PIS5N4
+ZONE_ID=Z02333473VXA3Y3PIS5N4
 DOMAIN_NAME="appalla.shop"
-
 
 for i in "${INSTANCES[@]}"
 do
@@ -15,7 +16,6 @@ do
     fi
 
     IP_ADDRESS=$(aws ec2 run-instances --image-id $AMI --instance-type $INSTANCE_TYPE --security-group-ids $SG_ID --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$i}]" --query 'Instances[0].PrivateIpAddress' --output text)
-
     echo "$i: $IP_ADDRESS"
 
     #create R53 record, make sure you delete existing record
