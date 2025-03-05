@@ -4,6 +4,7 @@ INSTANCES=("mongodb" "redis" "mysql" "rabbitmq" "catalogue" "user" "cart" "shipp
 ZONE_ID= Z02333473VXA3Y3PIS5N4
 DOMAIN_NAME="appalla.shop"
 
+
 for i in "${INSTANCES[@]}"
 do
     if [ $i == "mongodb" ] || [ $i == "mysql" ] || [ $i == "shipping" ]
